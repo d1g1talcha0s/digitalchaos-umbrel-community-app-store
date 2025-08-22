@@ -1,0 +1,32 @@
+services:
+    name>:
+        cap_add:
+            - NET_ADMIN
+        ports:
+            - 8112:8112
+            - 8118:8118
+            - 9118:9118
+            - 58846:58846
+            - 58946:58946
+            - 58946:58946/udp
+        container_name: <container
+        image: name>
+        command: -v <path for data files>:/data -v <path for config files>:/config -v
+            /etc/localtime:/etc/localtime:ro -e VPN_ENABLED=<yes|no> -e
+            VPN_USER=<vpn username> -e VPN_PASS=<vpn password> -e
+            VPN_PROV=<pia|airvpn|protonvpn|custom> -e
+            VPN_CLIENT=<openvpn|wireguard> -e VPN_OPTIONS=<additional openvpn
+            cli options> -e ENABLE_STARTUP_SCRIPTS=<yes|no> -e
+            ENABLE_PRIVOXY=<yes|no> -e STRICT_PORT_FORWARD=<yes|no> -e
+            USERSPACE_WIREGUARD=<yes|no> -e ENABLE_SOCKS=<yes|no> -e
+            SOCKS_USER=<socks username> -e SOCKS_PASS=<socks password> -e
+            LAN_NETWORK=<lan ipv4 network>/<cidr notation> -e NAME_SERVERS=<name
+            server ip(s)> -e
+            DELUGE_DAEMON_LOG_LEVEL=<info|warning|error|none|debug|trace|garbage>
+            -e
+            DELUGE_WEB_LOG_LEVEL=<info|warning|error|none|debug|trace|garbage>
+            -e DELUGE_ENABLE_WEBUI_PASSWORD=<yes|no> -e VPN_INPUT_PORTS=<port
+            number(s)> -e VPN_OUTPUT_PORTS=<port number(s)> -e
+            DEBUG=<true|false> -e HEALTHCHECK_COMMAND=<command> -e
+            HEALTHCHECK_ACTION=<action> -e UMASK=<umask for created files> -e
+            PUID=<UID for user> -e PGID=<GID for user> binhex/arch-delugevpn
